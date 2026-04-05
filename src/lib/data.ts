@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "./supabase-server";
+import { supabase as supabaseAdmin } from "./supabase";
 
 export async function getProjects() {
   const { data } = await supabaseAdmin
