@@ -163,47 +163,6 @@ export default async function Home() {
       {/* 8. LOCATIONS — 3-row scroll-linked marquee like bundl */}
       <LocationsMarquee />
 
-      {/* 9. CONTACT CTA — split layout with border dividers */}
-      <section className="relative z-[1]" style={{ backgroundColor: "#fdfcf9" }}>
-        <div style={{ borderTop: "1px solid #e1e1e1", borderBottom: "1px solid #e1e1e1", padding: "0 6vw", display: "flex", flexWrap: "wrap" }}>
-          {/* Left */}
-          <div style={{ flex: "1 1 400px", padding: "8vw 4vw 4vw 0", borderRight: "1px solid #e1e1e1" }}>
-            <AnimateOnScroll>
-              <h2 style={{ color: "#0b0c0f", fontWeight: 400, lineHeight: "110%", letterSpacing: "-0.012em", fontSize: "clamp(24px, 3vw, 40px)", marginBottom: "24px" }}>
-                Ready to start something amazing?
-              </h2>
-              <p style={{ color: "#6f6f6f", fontSize: "18px", fontWeight: 300, lineHeight: "28px", marginBottom: "32px" }}>
-                We can help you define and communicate your brand story through
-                effective marketing across all channels.
-              </p>
-              <Link
-                href="/contact"
-                className="btn-arrow"
-                style={{
-                  display: "inline-block",
-                  backgroundColor: "#000",
-                  color: "#fdfcf9",
-                  borderRadius: "50px",
-                  fontSize: "16px",
-                  fontWeight: 400,
-                  lineHeight: "100%",
-                  whiteSpace: "nowrap",
-                  padding: "14px 40px 16px 18px",
-                }}
-              >
-                Let&apos;s Begin
-              </Link>
-            </AnimateOnScroll>
-          </div>
-          {/* Right */}
-          <div style={{ flex: "1 1 400px", padding: "8vw 0 8vw 6vw", display: "flex", alignItems: "flex-start", flexDirection: "column", justifyContent: "center" }}>
-            <AnimateOnScroll delay={100}>
-              <p style={{ color: "#6f6f6f", fontSize: "14px", fontWeight: 400, marginBottom: "8px" }}>Get in touch</p>
-              <p style={{ color: "#0b0c0f", fontSize: "18px", fontWeight: 300 }}>Lagos, Nigeria</p>
-            </AnimateOnScroll>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
