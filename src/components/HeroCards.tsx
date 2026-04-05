@@ -1,6 +1,6 @@
 "use client";
 
-const IMG_SRC = "/sharebetaUploads/hero-wheel.png";
+const IMG_SRC = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/uploads/sharebeta%20projects%20wheel-2.webp`;
 
 export default function HeroCards() {
   return (

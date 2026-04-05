@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
+import { createClient } from "@supabase/supabase-js";
 import path from "path";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
@@ -11,7 +16,6 @@ export async function POST(req: NextRequest) {
   }
 
   const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
 
   // Sanitize filename and add timestamp to prevent collisions
   const ext = path.extname(file.name).toLowerCase();
@@ -21,11 +25,20 @@ export async function POST(req: NextRequest) {
     .toLowerCase();
   const filename = `${safeName}-${Date.now()}${ext}`;
 
-  const uploadDir = path.join(process.cwd(), "public", "sharebetaUploads");
-  await mkdir(uploadDir, { recursive: true });
+  const { error } = await supabase.storage
+    .from("uploads")
+    .upload(filename, bytes, {
+      contentType: file.type,
+      upsert: false,
+    });
 
-  const filepath = path.join(uploadDir, filename);
-  await writeFile(filepath, buffer);
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 
-  return NextResponse.json({ url: `/uploads/${filename}` });
+  const { data: urlData } = supabase.storage
+    .from("uploads")
+    .getPublicUrl(filename);
+
+  return NextResponse.json({ url: urlData.publicUrl });
 }

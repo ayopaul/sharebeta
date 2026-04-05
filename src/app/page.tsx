@@ -150,7 +150,7 @@ export default async function Home() {
             <AnimateOnScroll delay={100}>
               <div style={{ width: "100%", aspectRatio: "4/3", borderRadius: "16px", overflow: "hidden", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/sharebetaUploads/about-hero.jpeg" alt="Sharebeta team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <img src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/uploads/UFW4676-scaled-2.webp`} alt="Sharebeta team" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
             </AnimateOnScroll>
           </div>
