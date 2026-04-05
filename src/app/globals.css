@@ -1,26 +1,235 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --floral-white: #f9f7f1;
+  --darkest: #0b0c0f;
+  --white: #fdfcf9;
+  --dark: #161616;
+  --grey: #6f6f6f;
+  --silver: #bcbcbc;
+  --night: #262626;
+  --taupe: #f5f4f1;
+  --beige: #ebeae7;
+  --border-on-black: #262626;
+  --border-on-white: #e5e5e5;
+
+  /* Accent colors */
+  --berry: #c5f7f9;
+  --apple: #c1f898;
+  --peach: #ffb98d;
+  --cherry: #ff9e9e;
+  --lemon: #fffaae;
+  --grape: #e0cbff;
+  --grape-dark: #d1b2ff;
+
+  --background: var(--floral-white);
+  --foreground: var(--darkest);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-floral: var(--floral-white);
+  --color-darkest: var(--darkest);
+  --color-warm-white: var(--white);
+  --color-dark: var(--dark);
+  --color-grey: var(--grey);
+  --color-silver: var(--silver);
+  --color-night: var(--night);
+  --color-taupe: var(--taupe);
+  --color-beige: var(--beige);
+  --color-berry: var(--berry);
+  --color-apple: var(--apple);
+  --color-peach: var(--peach);
+  --color-cherry: var(--cherry);
+  --color-lemon: var(--lemon);
+  --color-grape: var(--grape);
+  --font-sans: "Inter", Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--floral-white);
+  color: var(--darkest);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 28px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* ShareBeta brand gradient */
+:root {
+  --sb-gradient: radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Section padding - matches bundl's 6vw */
+.section-padding {
+  padding-left: 6vw;
+  padding-right: 6vw;
+}
+
+/* Service tiles sibling fade - exact bundl behavior */
+.service-tiles-wrapper:hover .service-tile-link {
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+.service-tiles-wrapper .service-tile-link:hover {
+  opacity: 1 !important;
+}
+
+/* Hero image: circular composition of tiles, only top arc visible */
+.hero-image {
+  position: absolute;
+  inset: 0% auto auto;  /* top: 0, left/right: auto */
+  width: 2513px;
+  max-width: none;
+  z-index: 1;
+  /* Center horizontally: parent is flex justify-center + this naturally centers */
+  animation: heroRotate 240s linear infinite;
+}
+
+@keyframes heroRotate {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(-360deg); }
+}
+
+/* KPI borders */
+.kpi-cell {
+  border: 1px solid var(--border-on-black);
+}
+.kpi-cell + .kpi-cell {
+  margin-left: -1px;
+}
+
+/* Button arrow */
+.btn-arrow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' fill='none'%3E%3Cpath d='M1 6.5h11m0 0L7 1.5m5 5L7 11.5' stroke='%23fdfcf9' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 13px;
+  padding-right: 40px;
+  transition: background-position 0.15s, padding-right 0.15s;
+}
+.btn-arrow:hover {
+  background-position: right 11px center;
+}
+
+.btn-arrow-black {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' fill='none'%3E%3Cpath d='M1 6.5h11m0 0L7 1.5m5 5L7 11.5' stroke='%230b0c0f' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 13px;
+  padding-right: 40px;
+  transition: background-position 0.15s, padding-right 0.15s, background-color 0.15s;
+}
+.btn-arrow-black:hover {
+  background-position: right 11px center;
+  padding-right: 42px;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Down arrow for hero button */
+.btn-down-arrow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' fill='none'%3E%3Cpath d='M5.5 1v9m0 0L1 5.5m4.5 4.5L10 5.5' stroke='%23bcbcbc' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 22px center;
+  background-size: 11px;
+  padding-left: 50px;
+}
+
+/* Location city name styling */
+.location-city {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  color: #bcbcbc;
+  font-size: 5vw;
+  font-weight: 400;
+  line-height: 1.2;
+  cursor: default;
+  padding: 0.5vw 0;
+}
+
+.location-city::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(253, 252, 100, 0.5) 0%, rgba(253, 252, 100, 1) 100%);
+  opacity: 0.5;
+  transition: left 1s, opacity 0.5s;
+}
+
+.location-city:hover::before {
+  left: 100%;
+  opacity: 1;
+}
+
+/* Location row animations */
+@keyframes locLeft {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-200%); }
+}
+
+@keyframes locRight {
+  from { transform: translateX(-200%); }
+  to { transform: translateX(0%); }
+}
+
+@keyframes locLeftFast {
+  from { transform: translateX(0%); }
+  to { transform: translateX(-200%); }
+}
+
+/* Project card hover */
+.project-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.08);
+}
+.project-card:hover .project-card-image {
+  transform: scale(1.2);
+}
+
+/* Knowledge tile hover zoom */
+.know-tile {
+  background-size: 104% 104%;
+  transition: background-size 0.2s ease;
+}
+.know-tile:hover {
+  background-size: 108% 108%;
+}
+
