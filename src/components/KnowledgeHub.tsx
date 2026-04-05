@@ -37,8 +37,8 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
   };
 
   return (
-    <section style={{ backgroundColor: "#fdfcf9", position: "relative", zIndex: 1, paddingTop: 0 }}>
-      <div style={{ padding: "0 0 60px 6vw" }}>
+    <section style={{ backgroundColor: "#e8e0d5", position: "relative", zIndex: 1, padding: "60px 0" }}>
+      <div style={{ padding: "0 0 0 6vw" }}>
         {/* Heading */}
         <h3 style={{ color: "#0b0c0f", fontSize: "30px", fontWeight: 400, lineHeight: "40px", letterSpacing: "-0.008em", marginBottom: "0" }}>
           Knowledge and insights from our team

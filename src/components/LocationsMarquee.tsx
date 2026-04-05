@@ -12,9 +12,9 @@
  * - .location-rows: min-height 7vw, margin 1vw top/bottom
  */
 
-const row1Cities = ["Lagos", "Abuja", "Kano", "Port Harcourt", "Ibadan", "Kaduna", "Enugu"];
-const row2Cities = ["Northern Nigeria", "Lagos", "Abuja", "Kano", "Port Harcourt", "Ibadan", "Kaduna"];
-const row3Cities = ["Enugu", "Northern Nigeria", "Lagos", "Abuja", "Kano", "Port Harcourt", "Ibadan"];
+const row1Cities = ["Lagos", "Abuja", "London", "Port Harcourt", "Johannesburg", "Kaduna", "Cape Town"];
+const row2Cities = ["Manchester", "Lagos", "Abuja", "Durban", "Port Harcourt", "Ibadan", "Birmingham"];
+const row3Cities = ["Pretoria", "Kano", "Lagos", "Enugu", "London", "Port Harcourt", "Johannesburg"];
 
 function CityRow({
   cities,
@@ -69,7 +69,7 @@ export default function LocationsMarquee() {
       {/* Heading */}
       <div style={{ padding: "0 6vw", marginBottom: "4vw" }}>
         <h2 style={{ color: "#0b0c0f", fontWeight: 400, lineHeight: "110%", letterSpacing: "-0.012em", fontSize: "clamp(24px, 3vw, 40px)", marginBottom: "16px" }}>
-          Delivering quality across Nigeria
+          Delivering quality across the world
         </h2>
         <p style={{ color: "#6f6f6f", fontSize: "20px", fontWeight: 400, lineHeight: "130%", opacity: 0.4 }}>
           A few of the locations we&apos;ve delivered in with our ambitious partners
