@@ -55,6 +55,7 @@ export default function ServiceTiles() {
   return (
     <div
       ref={wrapperRef}
+      className="service-tiles-flex"
       style={{
         display: "flex",
         justifyContent: "space-between",

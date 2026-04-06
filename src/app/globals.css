@@ -176,7 +176,7 @@ body {
   font-weight: 400;
   line-height: 1.2;
   cursor: default;
-  padding: 0.5vw 0;
+  padding: 0.5vw 2vw;
 }
 
 .location-city::before {
@@ -231,5 +231,58 @@ body {
 }
 .know-tile:hover {
   background-size: 108% 108%;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  /* Prevent horizontal bleed */
+  html, body { overflow-x: hidden; }
+
+  /* 1. Hero: hide learn more on small screens to prevent overlap */
+  .hero-learn-more { display: none; }
+  .hero-wheel-container { height: 40vh !important; }
+
+  /* 2. Service tiles: stack vertically */
+  .service-tiles-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .service-tiles-flex .stile {
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 280px !important;
+  }
+
+  /* 3. Stats: 2x2 grid */
+  .stats-grid {
+    flex-wrap: wrap !important;
+    height: auto !important;
+  }
+  .stats-grid > div {
+    flex: 1 1 45% !important;
+    min-height: 150px !important;
+  }
+
+  /* 6. KnowledgeHub: pills above cards */
+  .kh-container { padding: 0 5vw !important; }
+  .kh-layout {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .kh-pills {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+  }
+  .know-tile {
+    width: 75vw !important;
+    height: 55vw !important;
+  }
+
+  /* 7. Location text hierarchy */
+  .location-city { font-size: 5vw; padding: 0.5vw 2vw; white-space: nowrap; }
 }
 

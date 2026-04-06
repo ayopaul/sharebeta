@@ -77,7 +77,7 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px" }}
+                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px", marginLeft: "20px", marginRight: "20px" }}
               />
             ))}
           </motion.div>
@@ -104,7 +104,7 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px" }}
+                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px", marginLeft: "20px", marginRight: "20px" }}
               />
             ))}
           </motion.div>

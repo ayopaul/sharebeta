@@ -64,9 +64,9 @@ export default function FeaturedCase({ projects }: { projects: ProjectData[] }) 
           display: flex; flex-direction: column; gap: 30px; z-index: 10;
         }
         .fc-image {
-          position: absolute; top: 50%; left: 50%;
+          position: absolute; top: 50%; left: 55%;
           transform: translate(-50%, -50%);
-          width: 40vw; max-height: 70vh; aspect-ratio: 4/3;
+          width: 35vw; max-height: 70vh; aspect-ratio: 4/3;
           border-radius: 16px; overflow: hidden;
           transition: opacity 300ms ease;
         }
@@ -95,24 +95,26 @@ export default function FeaturedCase({ projects }: { projects: ProjectData[] }) 
         }
         @media (max-width: 768px) {
           .fc-section {
-            height: auto; min-height: unset;
-            flex-direction: column; padding: 0;
-          }
-          .fc-image {
-            position: relative; top: auto; left: auto;
-            transform: none; width: 100%; max-height: 50vh;
-          }
-          .fc-info {
-            position: relative; bottom: auto; left: auto;
-            width: 100%; max-width: 100%; padding: 24px 5vw 32px;
+            height: auto; min-height: unset; max-height: unset;
+            flex-direction: column; padding: 24px 5vw 40px;
           }
           .fc-pills {
             position: relative; right: auto; top: auto;
             transform: none; flex-direction: row; flex-wrap: wrap;
-            align-items: center; justify-content: center;
-            padding: 24px 5vw; gap: 8px;
+            align-items: center; justify-content: flex-start;
+            padding: 0 0 16px; gap: 8px; order: 1;
           }
           .fc-pills-title { display: none; }
+          .fc-image {
+            position: relative; top: auto; left: auto;
+            transform: none; width: 100%; max-height: 50vh;
+            order: 2; aspect-ratio: 4/3;
+          }
+          .fc-info {
+            position: relative; bottom: auto; left: auto;
+            width: 100%; max-width: 100%; padding: 24px 0 0;
+            order: 3;
+          }
         }
       `}</style>
       <section className="fc-section">

@@ -38,6 +38,7 @@ function CityRow({
               minWidth: "200%",
               maxWidth: "200%",
               display: "flex",
+              gap: "4vw",
               position: "relative",
               animation: `${animationName} ${duration} linear infinite`,
             }}
@@ -68,10 +69,10 @@ export default function LocationsMarquee() {
     >
       {/* Heading */}
       <div style={{ padding: "0 6vw", marginBottom: "4vw" }}>
-        <h2 style={{ color: "#0b0c0f", fontWeight: 400, lineHeight: "110%", letterSpacing: "-0.012em", fontSize: "clamp(24px, 3vw, 40px)", marginBottom: "16px" }}>
+        <h2 style={{ color: "#0b0c0f", fontWeight: 400, lineHeight: "110%", letterSpacing: "-0.012em", fontSize: "clamp(28px, 4vw, 40px)", marginBottom: "16px" }}>
           Delivering quality across the world
         </h2>
-        <p style={{ color: "#6f6f6f", fontSize: "20px", fontWeight: 400, lineHeight: "130%", opacity: 0.4 }}>
+        <p style={{ color: "#6f6f6f", fontSize: "clamp(14px, 2vw, 20px)", fontWeight: 400, lineHeight: "130%", opacity: 0.4 }}>
           A few of the locations we&apos;ve delivered in with our ambitious partners
         </p>
       </div>

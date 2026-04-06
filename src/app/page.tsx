@@ -42,7 +42,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="relative flex justify-center items-end overflow-hidden"
+          className="relative flex justify-center items-end overflow-hidden hero-wheel-container"
           style={{
             width: "100vw",
             height: "50vh",
@@ -51,7 +51,7 @@ export default async function Home() {
           }}
         >
           <HeroCards />
-          <div className="relative z-[999] flex flex-col items-center justify-start">
+          <div className="relative z-[999] flex flex-col items-center justify-start hero-learn-more">
             <Link
               href="#services"
               className="btn-down-arrow border border-[#262626] text-[#bcbcbc] rounded-full text-[16px] font-normal leading-none whitespace-nowrap bg-transparent"
@@ -69,7 +69,7 @@ export default async function Home() {
         <div className="flex flex-col items-center w-full px-[6vw]" style={{ paddingTop: "80px" }}>
           <h2
             className="text-[#bcbcbc] font-normal text-center leading-[110%]"
-            style={{ fontSize: "40px", width: "60vw", marginBottom: "80px" }}
+            style={{ fontSize: "clamp(24px, 5vw, 40px)", width: "100%", maxWidth: "60vw", marginBottom: "80px" }}
           >
             Create, manage, and scale effective marketing across all channels
           </h2>
@@ -80,7 +80,7 @@ export default async function Home() {
       {/* 3. KPI STATS — bordered cells, 300px tall */}
       <section className="bg-black relative z-[1]">
         <div className="px-[6vw]">
-          <div style={{ display: "flex", height: "300px", overflow: "hidden" }}>
+          <div className="stats-grid" style={{ display: "flex", height: "300px", overflow: "hidden" }}>
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
@@ -114,7 +114,7 @@ export default async function Home() {
 
       {/* 5. GRADIENT TEXT BANNER */}
       <section style={{ backgroundColor: "#000", borderTop: "1px solid #262626", padding: "6vw", position: "relative", zIndex: 1 }}>
-        <div style={{ width: "70vw", maxWidth: "1000px", margin: "0 auto" }}>
+        <div style={{ width: "100%", maxWidth: "1000px", margin: "0 auto" }}>
           <h2 style={{ color: "#bcbcbc", fontWeight: 400, lineHeight: "110%", letterSpacing: "-0.012em", fontSize: "clamp(24px, 3.5vw, 40px)" }}>
             Building compelling stories across Marketing, Digital, and Experiential.{" "}
             <span className="gradient-text">Innovation-driven.</span>

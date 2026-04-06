@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 
 interface BlogPostData {
@@ -20,7 +20,7 @@ const gradients = [
 ];
 
 export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] }) {
-  const posts = blogPosts.map((p, i) => ({
+  const allPosts = blogPosts.map((p, i) => ({
     topic: p.category,
     type: "Article",
     title: p.title,
@@ -29,28 +29,33 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
   }));
   const topics = [...new Set(blogPosts.map((p) => p.category))];
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+
+  const posts = activeFilter ? allPosts.filter((p) => p.topic === activeFilter) : allPosts;
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
-    const amount = 500;
+    const card = scrollRef.current.querySelector("a");
+    const amount = card ? card.offsetWidth + 20 : 300;
     scrollRef.current.scrollBy({ left: dir === "right" ? amount : -amount, behavior: "smooth" });
   };
 
   return (
-    <section style={{ backgroundColor: "#e8e0d5", position: "relative", zIndex: 1, padding: "60px 0" }}>
-      <div style={{ padding: "0 0 0 6vw" }}>
+    <section style={{ backgroundColor: "#e8e0d5", position: "relative", zIndex: 1, padding: "60px 0", overflow: "hidden" }}>
+      <div className="kh-container" style={{ padding: "0 0 0 6vw" }}>
         {/* Heading */}
         <h3 style={{ color: "#0b0c0f", fontSize: "30px", fontWeight: 400, lineHeight: "40px", letterSpacing: "-0.008em", marginBottom: "0" }}>
           Knowledge and insights from our team
         </h3>
 
         {/* Two-column: pills left, cards right */}
-        <div style={{ display: "flex", gap: "40px", justifyContent: "space-between", alignItems: "center", width: "100%", marginTop: "40px", overflow: "hidden" }}>
+        <div className="kh-layout" style={{ display: "flex", gap: "40px", justifyContent: "space-between", alignItems: "center", width: "100%", marginTop: "40px" }}>
           {/* Left: topic filter pills */}
-          <div style={{ flex: "0 0 auto", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px", zIndex: 10 }}>
+          <div className="kh-pills" style={{ flex: "0 0 auto", display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "8px", zIndex: 10 }}>
             {topics.map((topic) => (
               <button
                 key={topic}
+                onClick={() => setActiveFilter(activeFilter === topic ? null : topic)}
                 style={{
                   border: "1px solid #0b0c0f",
                   borderRadius: "50px",
@@ -58,8 +63,8 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
                   fontSize: "14px",
                   fontWeight: 400,
                   lineHeight: "100%",
-                  color: "#0b0c0f",
-                  backgroundColor: "transparent",
+                  color: activeFilter === topic ? "#fdfcf9" : "#0b0c0f",
+                  backgroundColor: activeFilter === topic ? "#0b0c0f" : "transparent",
                   whiteSpace: "nowrap",
                   cursor: "pointer",
                   transition: "all 0.15s",
@@ -74,7 +79,7 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
           <div
             ref={scrollRef}
             className="hide-scrollbar"
-            style={{ display: "flex", gap: "20px", overflow: "hidden", paddingRight: "6vw", flex: "1 1 auto" }}
+            style={{ display: "flex", gap: "20px", overflowX: "scroll", overflowY: "hidden", paddingRight: "6vw", flex: "1 1 auto", WebkitOverflowScrolling: "touch" }}
           >
             {posts.map((post, i) => (
               <Link key={i} href="/blog" style={{ display: "block", flexShrink: 0, textDecoration: "none", color: "inherit" }}>
@@ -90,12 +95,8 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
                     background: post.bg,
                     backgroundPosition: "50%",
                     backgroundSize: "104% 104%",
-                    width: "45vw",
-                    maxWidth: "750px",
-                    minWidth: "450px",
-                    height: "22vw",
-                    minHeight: "300px",
-                    maxHeight: "360px",
+                    width: "clamp(280px, 45vw, 750px)",
+                    height: "clamp(250px, 22vw, 360px)",
                     padding: "16px 15px 16px 16px",
                     position: "relative",
                     overflow: "hidden",
