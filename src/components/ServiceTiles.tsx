@@ -8,19 +8,19 @@ const SB_GRADIENT_HOVER = "radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFB8
 
 const tiles = [
   {
-    title: "Digital &\nSocial Media",
+    title: "Digital & Social Media",
     desc: "We manage your social media channels with smart targeting, reaching the right audience and personas.",
     bg: SB_GRADIENT,
     bgHover: SB_GRADIENT_HOVER,
   },
   {
-    title: "Experiential\n& Events",
+    title: "Experiential & Events",
     desc: "Using creative ideas to immerse consumers in live experiences and activations that leave lasting impressions.",
     bg: SB_GRADIENT,
     bgHover: SB_GRADIENT_HOVER,
   },
   {
-    title: "Web & Content\nStrategy",
+    title: "Web & Content Strategy",
     desc: "Website design that fulfills business goals, combined with storytelling that transforms brands.",
     bg: SB_GRADIENT,
     bgHover: SB_GRADIENT_HOVER,
@@ -98,8 +98,8 @@ export default function ServiceTiles() {
                 fontSize: "40px",
                 fontWeight: 400,
                 lineHeight: "110%",
-                width: "250px",
-                whiteSpace: "pre-line",
+                width: "100%",
+                whiteSpace: "normal",
                 color: "#000",
                 margin: 0,
               }}
@@ -116,6 +116,7 @@ export default function ServiceTiles() {
                 borderTop: "1px solid rgba(0,0,0,0.1)",
                 paddingRight: "60px",
                 color: "#000",
+                textAlign: "justify",
               }}
             >
               {tile.desc}

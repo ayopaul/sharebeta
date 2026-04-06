@@ -41,7 +41,7 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
   };
 
   return (
-    <section style={{ backgroundColor: "#e8e0d5", position: "relative", zIndex: 1, padding: "60px 0", overflow: "hidden" }}>
+    <section style={{ backgroundColor: "#e8e0d5", position: "relative", zIndex: 1, padding: "60px 0" }}>
       <div className="kh-container" style={{ padding: "0 0 0 6vw" }}>
         {/* Heading */}
         <h3 style={{ color: "#0b0c0f", fontSize: "30px", fontWeight: 400, lineHeight: "40px", letterSpacing: "-0.008em", marginBottom: "0" }}>
@@ -78,8 +78,8 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
           {/* Right: horizontally scrolling cards */}
           <div
             ref={scrollRef}
-            className="hide-scrollbar"
-            style={{ display: "flex", gap: "20px", overflowX: "scroll", overflowY: "hidden", paddingRight: "6vw", flex: "1 1 auto", WebkitOverflowScrolling: "touch" }}
+            className="hide-scrollbar kh-cards"
+            style={{ display: "flex", gap: "20px", overflowX: "auto", paddingRight: "6vw", flex: "1 1 auto" }}
           >
             {posts.map((post, i) => (
               <Link key={i} href="/blog" style={{ display: "block", flexShrink: 0, textDecoration: "none", color: "inherit" }}>
@@ -193,7 +193,7 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
             </button>
           </div>
           <Link href="/blog" style={{ color: "#0b0c0f", fontSize: "14px", textDecoration: "none", marginLeft: "20px", marginRight: "10px" }}>
-            View all: Blog
+            View all posts
           </Link>
         </div>
       </div>

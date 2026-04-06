@@ -235,8 +235,6 @@ body {
 
 /* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 768px) {
-  /* Prevent horizontal bleed */
-  html, body { overflow-x: hidden; }
 
   /* 1. Hero: hide learn more on small screens to prevent overlap */
   .hero-learn-more { display: none; }
@@ -271,15 +269,35 @@ body {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 20px !important;
+    overflow: visible !important;
   }
   .kh-pills {
     flex-direction: row !important;
     flex-wrap: wrap !important;
     align-items: flex-start !important;
   }
+  .kh-cards {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    scroll-snap-type: x mandatory;
+    width: 100% !important;
+    padding-right: 5vw !important;
+  }
+  .kh-cards a {
+    scroll-snap-align: start;
+  }
   .know-tile {
-    width: 75vw !important;
-    height: 55vw !important;
+    width: 80vw !important;
+    height: 60vw !important;
+    min-height: 250px !important;
+  }
+  .know-tile h4 {
+    font-size: 28px !important;
+    line-height: 34px !important;
+  }
+  .know-tile span {
+    font-size: 16px !important;
   }
 
   /* 7. Location text hierarchy */
