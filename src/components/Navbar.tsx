@@ -52,7 +52,7 @@ export default function Navbar() {
           className="flex items-center h-full text-white"
           style={{ marginLeft: "2vw", paddingTop: "24px", paddingBottom: "24px" }}
         >
-          <span className="text-[20px] font-semibold tracking-tight">sharebeta</span>
+          <img src="https://nuxnfkinthnjrpgruomz.supabase.co/storage/v1/object/public/uploads/sharebeta-logo-.webp" alt="Sharebeta" style={{ height: "28px", width: "auto", filter: "brightness(0) invert(1)" }} />
         </Link>
 
         {/* Desktop nav */}

@@ -69,7 +69,12 @@ export default function ServicesClient({ services }: { services: Service[] }) {
             <div style={{ width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div style={{ borderTop: "0.5px solid rgba(0,0,0,0.2)", marginBottom: "3vw", paddingTop: "3vw", paddingRight: "6vw" }}>
                 <AnimateOnScroll>
-                  <div style={{ width: "100%", height: "20vw", borderRadius: "16px", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, rgba(255,172,62,0.25) 0%, rgba(251,113,162,0.25) 56.76%, rgba(240,40,0,0.25) 100%)" }} />
+                  <div style={{ width: "100%", height: "20vw", borderRadius: "16px", overflow: "hidden", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, rgba(255,172,62,0.25) 0%, rgba(251,113,162,0.25) 56.76%, rgba(240,40,0,0.25) 100%)" }}>
+                    {s.image && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={s.image} alt={s.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    )}
+                  </div>
                 </AnimateOnScroll>
                 <AnimateOnScroll>
                   <div style={{ border: "1px solid #262626", borderRadius: "16px", marginTop: "2vw", marginBottom: "2vw" }}>
@@ -100,16 +105,6 @@ export default function ServicesClient({ services }: { services: Service[] }) {
           {additionalServices.map((s) => (
             <span key={s} style={{ padding: "8px 16px", border: "1px solid #262626", borderRadius: "100px", fontSize: "14px", color: "#6f6f6f", fontWeight: 400 }}>{s}</span>
           ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section style={{ backgroundColor: "#fdfcf9", position: "relative", zIndex: 1 }}>
-        <div style={{ borderTop: "1px solid #e1e1e1", padding: "8vw 6vw", textAlign: "center" }}>
-          <AnimateOnScroll>
-            <h2 style={{ color: "#0b0c0f", fontWeight: 400, fontSize: "40px", lineHeight: "110%", marginBottom: "24px" }}>Let&apos;s work together</h2>
-            <Link href="/contact" className="btn-arrow" style={{ display: "inline-block", backgroundColor: "#000", color: "#fdfcf9", borderRadius: "50px", fontSize: "16px", fontWeight: 400, lineHeight: "100%", padding: "14px 40px 16px 18px", whiteSpace: "nowrap" }}>Contact Us</Link>
-          </AnimateOnScroll>
         </div>
       </section>
     </>

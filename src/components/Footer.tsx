@@ -138,8 +138,8 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 px-[1.5vw]">
         <div className="flex items-center gap-4">
-          <Link href="/" className="text-[#0b0c0f] text-[14px] font-semibold">
-            sharebeta
+          <Link href="/" className="flex items-center">
+            <img src="https://nuxnfkinthnjrpgruomz.supabase.co/storage/v1/object/public/uploads/sharebeta-logo-.webp" alt="Sharebeta" style={{ height: "20px", width: "auto" }} />
           </Link>
           <span className="text-[#bcbcbc] text-[12px]">Lagos, Nigeria</span>
         </div>
