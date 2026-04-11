@@ -24,16 +24,19 @@ export default function ServicesClient({ services }: { services: Service[] }) {
     <>
       {/* Hero */}
       <section style={{ backgroundColor: "#000", height: "80vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 6vw", position: "relative", zIndex: 1 }}>
-        <h1 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: "110%", letterSpacing: "-0.012em", maxWidth: "800px" }}>
-          There is a way for better marketing.
-        </h1>
-        <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "25px", fontWeight: 300, lineHeight: "130%", maxWidth: "600px", marginTop: "24px" }}>
-          We utilize all available channels to deliver the best measurable results for your business.
-        </p>
+        <AnimateOnScroll>
+          <h1 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: "110%", letterSpacing: "-0.012em", maxWidth: "800px" }}>
+            There is a way for better marketing.
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "25px", fontWeight: 300, lineHeight: "130%", maxWidth: "600px", marginTop: "24px" }}>
+            We utilize all available channels to deliver the best measurable results for your business.
+          </p>
+        </AnimateOnScroll>
       </section>
 
       {/* Jump to a service */}
       <section style={{ backgroundColor: "#000", padding: "0 6vw 4vw", position: "relative", zIndex: 1 }}>
+        <AnimateOnScroll>
         <p style={{ color: "#fdfcf9", fontSize: "16px", fontWeight: 400, lineHeight: "150%" }}>Jump to a service</p>
         <div style={{ display: "flex", flexWrap: "wrap", marginTop: "20px" }}>
           {services.map((s) => (
@@ -52,6 +55,7 @@ export default function ServicesClient({ services }: { services: Service[] }) {
             </button>
           ))}
         </div>
+        </AnimateOnScroll>
       </section>
 
       {/* Service blocks */}
@@ -60,10 +64,12 @@ export default function ServicesClient({ services }: { services: Service[] }) {
           <div key={s.slug} id={s.slug} style={{ display: "flex", borderBottom: "1px solid #262626", minHeight: "80vh" }}>
             <div style={{ width: "50%", position: "relative" }}>
               <div style={{ position: "sticky", top: "120px", padding: "3vw 10vw 16vh 6vw", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <div style={{ backgroundColor: s.tag_color, color: "#000", borderRadius: "8px", textTransform: "uppercase", padding: "3px 8px", fontSize: "14px", fontWeight: 400, display: "inline-flex", justifyContent: "center", alignItems: "center" }}>{s.tag}</div>
-                <h2 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(32px, 4vw, 56px)", lineHeight: "110%", marginTop: "20px", marginBottom: "20px" }}>{s.title}</h2>
-                <p style={{ color: "#bcbcbc", fontSize: "16px", fontWeight: 400, lineHeight: "150%", marginBottom: "40px" }}>{s.subtitle}</p>
-                <Link href="/contact" className="btn-arrow" style={{ display: "inline-block", border: "2px solid #bcbcbc", borderRadius: "100px", padding: "10px 34px 11px 16px", fontSize: "16px", fontWeight: 400, lineHeight: "100%", color: "#bcbcbc", backgroundColor: "transparent", whiteSpace: "nowrap", transition: "all 0.15s" }}>Book a call</Link>
+                <AnimateOnScroll>
+                  <div style={{ backgroundColor: s.tag_color, color: "#000", borderRadius: "8px", textTransform: "uppercase", padding: "3px 8px", fontSize: "14px", fontWeight: 400, display: "inline-flex", justifyContent: "center", alignItems: "center" }}>{s.tag}</div>
+                  <h2 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(32px, 4vw, 56px)", lineHeight: "110%", marginTop: "20px", marginBottom: "20px" }}>{s.title}</h2>
+                  <p style={{ color: "#bcbcbc", fontSize: "16px", fontWeight: 400, lineHeight: "150%", marginBottom: "40px" }}>{s.subtitle}</p>
+                  <Link href="/contact" className="btn-arrow" style={{ display: "inline-block", border: "2px solid #bcbcbc", borderRadius: "100px", padding: "10px 34px 11px 16px", fontSize: "16px", fontWeight: 400, lineHeight: "100%", color: "#bcbcbc", backgroundColor: "transparent", whiteSpace: "nowrap", transition: "all 0.15s" }}>Book a call</Link>
+                </AnimateOnScroll>
               </div>
             </div>
             <div style={{ width: "50%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
@@ -100,12 +106,14 @@ export default function ServicesClient({ services }: { services: Service[] }) {
 
       {/* Additional services */}
       <section style={{ backgroundColor: "#000", padding: "5vw 6vw", position: "relative", zIndex: 1 }}>
-        <h3 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "30px", lineHeight: "40px", textAlign: "center", marginBottom: "3vw" }}>We also specialize in</h3>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px" }}>
-          {additionalServices.map((s) => (
-            <span key={s} style={{ padding: "8px 16px", border: "1px solid #262626", borderRadius: "100px", fontSize: "14px", color: "#6f6f6f", fontWeight: 400 }}>{s}</span>
-          ))}
-        </div>
+        <AnimateOnScroll>
+          <h3 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "30px", lineHeight: "40px", textAlign: "center", marginBottom: "3vw" }}>We also specialize in</h3>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px" }}>
+            {additionalServices.map((s) => (
+              <span key={s} style={{ padding: "8px 16px", border: "1px solid #262626", borderRadius: "100px", fontSize: "14px", color: "#6f6f6f", fontWeight: 400 }}>{s}</span>
+            ))}
+          </div>
+        </AnimateOnScroll>
       </section>
     </>
   );

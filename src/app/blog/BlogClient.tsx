@@ -67,7 +67,7 @@ export default function BlogClient({ blogPosts }: { blogPosts: BlogPost[] }) {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
                   <span style={{ display: "inline-block", backgroundColor: "rgba(255,255,255,0.08)", color: "#fdfcf9", fontSize: "14px", fontWeight: 400, padding: "4px 12px", borderRadius: "50px", textTransform: "uppercase", letterSpacing: "0.08em" }}>{post.category}</span>
-                  <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>{new Date(post.date).toLocaleDateString()}</span>
+                  <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>{new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
                 </div>
                 <h3 style={{ color: "#fdfcf9", fontSize: "24px", fontWeight: 400, lineHeight: "30px", marginBottom: "8px" }}>{post.title}</h3>
                 <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "14px", fontWeight: 400, lineHeight: "150%" }}>{post.excerpt}</p>

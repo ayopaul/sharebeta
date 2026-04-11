@@ -77,6 +77,7 @@ export default function KnowledgeHub({ blogPosts }: { blogPosts: BlogPostData[] 
             <button
               key={topic}
               onClick={() => setActiveFilter(activeFilter === topic ? null : topic)}
+              className="btn-border-hover"
               style={{
                 border: "1px solid #0b0c0f",
                 borderRadius: "50px",

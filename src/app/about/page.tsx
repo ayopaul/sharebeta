@@ -97,7 +97,7 @@ export default async function AboutPage() {
       </section>
 
       {/* ===== Team ===== */}
-      <section style={{ backgroundColor: "#000", padding: "5vw 6vw", position: "relative", zIndex: 1, borderTop: "1px solid #262626" }}>
+      <section id="team" style={{ backgroundColor: "#000", padding: "5vw 6vw", position: "relative", zIndex: 1, borderTop: "1px solid #262626" }}>
         <AnimateOnScroll>
           <h2 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "40px", lineHeight: "110%", marginBottom: "40px" }}>Our Team</h2>
         </AnimateOnScroll>

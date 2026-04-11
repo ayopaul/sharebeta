@@ -14,12 +14,14 @@ export default function ContactPage() {
     <>
       {/* ===== DARK: Hero ===== */}
       <section style={{ backgroundColor: "#000", height: "80vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 6vw", position: "relative", zIndex: 1 }}>
-        <h1 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: "110%", letterSpacing: "-0.012em", maxWidth: "800px" }}>
-          Build your brand without borders.
-        </h1>
-        <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "25px", fontWeight: 300, lineHeight: "130%", maxWidth: "600px", marginTop: "24px" }}>
-          No matter where you are, our team of creatives can work collaboratively to tell your brand story effectively.
-        </p>
+        <AnimateOnScroll>
+          <h1 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "clamp(36px, 5vw, 64px)", lineHeight: "110%", letterSpacing: "-0.012em", maxWidth: "800px" }}>
+            Build your brand without borders.
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "25px", fontWeight: 300, lineHeight: "130%", maxWidth: "600px", marginTop: "24px" }}>
+            No matter where you are, our team of creatives can work collaboratively to tell your brand story effectively.
+          </p>
+        </AnimateOnScroll>
       </section>
 
       {/* ===== LIGHT: Contact card — split layout ===== */}
@@ -35,7 +37,31 @@ export default function ContactPage() {
               <p style={{ color: "#6f6f6f", fontSize: "14px", fontWeight: 400, marginBottom: "32px" }}>CEO</p>
               <p style={{ color: "#0b0c0f", fontWeight: 600, fontSize: "18px", marginBottom: "20px" }}>Ask me anything!</p>
               <a href="mailto:martin.uro@sharebetang.com" style={{ color: "#0b0c0f", fontSize: "14px", display: "block", marginBottom: "6px", textDecoration: "none" }}>martin.uro@sharebetang.com</a>
-              <a href="https://www.linkedin.com/in/martin-uro-arpa-561a62b9/" target="_blank" rel="noopener noreferrer" style={{ color: "#0b0c0f", fontSize: "14px", textDecoration: "none" }}>Connect on LinkedIn</a>
+              <a href="https://www.linkedin.com/in/martin-uro-arpa-561a62b9/" target="_blank" rel="noopener noreferrer" style={{ color: "#0b0c0f", fontSize: "14px", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: "4px" }}>Connect on LinkedIn</a>
+              <hr style={{ border: "none", borderTop: "1px solid #e5e5e5", width: "100%", margin: "16px 0" }} />
+              <a
+                href="https://www.instagram.com/sharebeta/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: "14px", textDecoration: "none", display: "flex", alignItems: "center", gap: "6px", color: "#0b0c0f", transition: "all 0.3s" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "linear-gradient(90deg, #FFAC3E, #FB71A2, #F02800)";
+                  e.currentTarget.style.backgroundClip = "text";
+                  e.currentTarget.style.webkitBackgroundClip = "text";
+                  e.currentTarget.style.color = "transparent";
+                  const svg = e.currentTarget.querySelector("svg");
+                  if (svg) svg.style.fill = "#FB71A2";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "none";
+                  e.currentTarget.style.color = "#0b0c0f";
+                  const svg = e.currentTarget.querySelector("svg");
+                  if (svg) svg.style.fill = "currentColor";
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{ transition: "fill 0.3s", flexShrink: 0 }}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Follow on Instagram
+              </a>
             </div>
             {/* Right — strategy call */}
             <div style={{ flex: "1 1 340px", padding: "60px 50px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -49,7 +75,7 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
-              <a href="mailto:martin.uro@sharebetang.com" className="btn-arrow" style={{ display: "inline-block", backgroundColor: "#fff", color: "#0b0c0f", borderRadius: "50px", fontSize: "14px", fontWeight: 400, lineHeight: "100%", padding: "14px 40px 16px 18px", whiteSpace: "nowrap", border: "1px solid #0b0c0f", cursor: "pointer", textDecoration: "none", width: "fit-content" }}>
+              <a href="mailto:martin.uro@sharebetang.com" className="btn-arrow-black" style={{ display: "inline-block", backgroundColor: "#fff", color: "#0b0c0f", borderRadius: "50px", fontSize: "14px", fontWeight: 400, lineHeight: "100%", padding: "14px 40px 16px 18px", whiteSpace: "nowrap", border: "1px solid #0b0c0f", cursor: "pointer", textDecoration: "none", width: "fit-content" }}>
                 Book a call
               </a>
             </div>
