@@ -27,6 +27,16 @@ export async function getBlogPosts() {
   return data ?? [];
 }
 
+export async function getBlogPostBySlug(slug: string) {
+  const { data } = await supabaseAdmin
+    .from("blog_posts")
+    .select("*")
+    .eq("slug", slug)
+    .eq("published", true)
+    .single();
+  return data;
+}
+
 export async function getTeamMembers() {
   const { data } = await supabaseAdmin
     .from("team_members")

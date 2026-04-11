@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createBrowserSupabase } from "@/lib/supabase-browser";
+import AnalyticsWidget from "@/components/admin/AnalyticsWidget";
 
 interface Counts {
   projects: number;
@@ -65,7 +66,9 @@ export default function AdminDashboard() {
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+      <AnalyticsWidget />
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginTop: "16px" }}>
         <Link href="/hakken/settings" style={{ textDecoration: "none" }}>
           <div style={{ backgroundColor: "#fff", borderRadius: "16px", padding: "24px", border: "1px solid #e5e5e5" }}>
             <p style={{ color: "#0b0c0f", fontSize: "18px", fontWeight: 400, marginBottom: "8px" }}>Site Settings</p>
