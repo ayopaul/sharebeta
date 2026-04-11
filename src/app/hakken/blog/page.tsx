@@ -5,6 +5,7 @@ import { createBrowserSupabase } from "@/lib/supabase-browser";
 import AdminTable from "@/components/admin/AdminTable";
 import CategoryPicker from "@/components/admin/CategoryPicker";
 import ImageUpload from "@/components/admin/ImageUpload";
+import RichTextEditor from "@/components/admin/RichTextEditor";
 
 const inputStyle: React.CSSProperties = { width: "100%", padding: "8px 12px", border: "1px solid #e5e5e5", borderRadius: "8px", fontSize: "14px", color: "#0b0c0f", outline: "none" };
 
@@ -14,6 +15,7 @@ export default function AdminBlog() {
   const [showForm, setShowForm] = useState(false);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
+  const [content, setContent] = useState("");
   const supabase = createBrowserSupabase();
 
   const load = async () => {
@@ -26,6 +28,7 @@ export default function AdminBlog() {
     setEditing(row ?? null);
     setCategory((row?.category as string) ?? "");
     setImage((row?.image as string) ?? "");
+    setContent((row?.content as string) ?? "");
     setShowForm(true);
   };
 
@@ -37,7 +40,7 @@ export default function AdminBlog() {
       slug: (form.get("title") as string).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
       category,
       excerpt: form.get("excerpt") as string,
-      content: form.get("content") as string,
+      content,
       author: form.get("author") as string,
       image,
       date: form.get("date") as string,
@@ -71,7 +74,7 @@ export default function AdminBlog() {
               <div><label style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "14px", color: "#6f6f6f", cursor: "pointer", marginTop: "8px" }}><input type="checkbox" name="published" defaultChecked={editing?.published !== false} />Published</label></div>
               <div />
               <div style={{ gridColumn: "span 2" }}><label style={{ display: "block", fontSize: "14px", color: "#6f6f6f", marginBottom: "6px" }}>Excerpt</label><textarea name="excerpt" defaultValue={(editing?.excerpt as string) ?? ""} required rows={2} style={{ ...inputStyle, resize: "vertical" }} /></div>
-              <div style={{ gridColumn: "span 2" }}><label style={{ display: "block", fontSize: "14px", color: "#6f6f6f", marginBottom: "6px" }}>Content</label><textarea name="content" defaultValue={(editing?.content as string) ?? ""} rows={8} style={{ ...inputStyle, resize: "vertical" }} /></div>
+              <div style={{ gridColumn: "span 2" }}><label style={{ display: "block", fontSize: "14px", color: "#6f6f6f", marginBottom: "6px" }}>Content</label><RichTextEditor value={content} onChange={setContent} /></div>
             </div>
             <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
               <button type="submit" style={{ padding: "8px 24px", backgroundColor: "#0b0c0f", color: "#fdfcf9", border: "none", borderRadius: "8px", fontSize: "14px", cursor: "pointer" }}>{editing ? "Update" : "Create"}</button>

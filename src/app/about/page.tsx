@@ -102,17 +102,30 @@ export default async function AboutPage() {
           <h2 style={{ color: "#bcbcbc", fontWeight: 400, fontSize: "40px", lineHeight: "110%", marginBottom: "40px" }}>Our Team</h2>
         </AnimateOnScroll>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "40px 20px" }}>
-          {teamMembers.map((m: { name: string; role: string; image?: string }, i: number) => (
+          {teamMembers.map((m: { name: string; role: string; image?: string; linkedin?: string }, i: number) => (
             <AnimateOnScroll key={m.name} delay={i * 40}>
               <div>
-                <div style={{ width: "100%", aspectRatio: "1/1", borderRadius: "10px", overflow: "hidden", marginBottom: "12px", backgroundColor: "#1a1a1a" }}>
-                  {m.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={m.image} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  ) : (
-                    <div style={{ width: "100%", height: "100%", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%)", opacity: 0.3 }} />
-                  )}
-                </div>
+                {m.linkedin ? (
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: "block", cursor: "pointer" }}>
+                    <div style={{ width: "100%", aspectRatio: "1/1", borderRadius: "10px", overflow: "hidden", marginBottom: "12px", backgroundColor: "#1a1a1a" }}>
+                      {m.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={m.image} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(100%)" }} />
+                      ) : (
+                        <div style={{ width: "100%", height: "100%", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%)", opacity: 0.3 }} />
+                      )}
+                    </div>
+                  </a>
+                ) : (
+                  <div style={{ width: "100%", aspectRatio: "1/1", borderRadius: "10px", overflow: "hidden", marginBottom: "12px", backgroundColor: "#1a1a1a" }}>
+                    {m.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={m.image} alt={m.name} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(100%)" }} />
+                    ) : (
+                      <div style={{ width: "100%", height: "100%", background: "radial-gradient(185.59% 145.4% at 2.11% 98.35%, #FFAC3E 0%, #FB71A2 56.76%, #F02800 100%)", opacity: 0.3 }} />
+                    )}
+                  </div>
+                )}
                 <p style={{ color: "#bcbcbc", fontSize: "16px", fontWeight: 400, lineHeight: "22px" }}>{m.name}</p>
                 <p style={{ color: "#6f6f6f", fontSize: "13px", fontWeight: 400, lineHeight: "18px", marginTop: "2px" }}>{m.role}</p>
               </div>

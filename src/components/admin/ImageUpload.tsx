@@ -11,9 +11,14 @@ interface ImageUploadProps {
 export default function ImageUpload({ value, onChange, label = "Image" }: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const upload = async (file: File) => {
+    // Show local preview immediately
+    const localUrl = URL.createObjectURL(file);
+    setPreview(localUrl);
+
     setUploading(true);
     const formData = new FormData();
     formData.append("file", file);
@@ -25,6 +30,8 @@ export default function ImageUpload({ value, onChange, label = "Image" }: ImageU
       onChange(data.url);
     }
     setUploading(false);
+    URL.revokeObjectURL(localUrl);
+    setPreview(null);
   };
 
   const handleDrop = (e: React.DragEvent) => {
@@ -38,16 +45,33 @@ export default function ImageUpload({ value, onChange, label = "Image" }: ImageU
     <div>
       <label style={{ display: "block", fontSize: "14px", color: "#6f6f6f", marginBottom: "6px" }}>{label}</label>
 
-      {value && (
+      {(preview || value) && (
         <div style={{ marginBottom: "8px", position: "relative", display: "inline-block" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={value} alt="" style={{ height: "80px", borderRadius: "8px", objectFit: "cover" }} />
-          <button
-            onClick={() => onChange("")}
-            style={{ position: "absolute", top: "-6px", right: "-6px", width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#ff9e9e", color: "#fff", border: "none", cursor: "pointer", fontSize: "12px", lineHeight: 1 }}
-          >
-            x
-          </button>
+          <img
+            src={preview || value}
+            alt=""
+            style={{
+              height: "80px",
+              borderRadius: "8px",
+              objectFit: "cover",
+              opacity: uploading ? 0.5 : 1,
+              transition: "opacity 0.2s",
+            }}
+          />
+          {uploading && (
+            <span style={{ position: "absolute", bottom: "4px", left: "4px", fontSize: "11px", color: "#fff", backgroundColor: "rgba(0,0,0,0.6)", padding: "2px 6px", borderRadius: "4px" }}>
+              Uploading...
+            </span>
+          )}
+          {!uploading && value && (
+            <button
+              onClick={() => onChange("")}
+              style={{ position: "absolute", top: "-6px", right: "-6px", width: "20px", height: "20px", borderRadius: "50%", backgroundColor: "#ff9e9e", color: "#fff", border: "none", cursor: "pointer", fontSize: "12px", lineHeight: 1 }}
+            >
+              x
+            </button>
+          )}
         </div>
       )}
 

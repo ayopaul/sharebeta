@@ -3,35 +3,36 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const BUCKET = "https://nuxnfkinthnjrpgruomz.supabase.co/storage/v1/object/public/uploads/client%20logos";
+
 const row1Logos = [
-  { name: "Jaguar", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6a3_Jaguar%20logo.png" },
-  { name: "Land Rover", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e610_Land%20rover.svg" },
-  { name: "AB InBev", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e152_610953326e72a0e7f2f4abe9_Logo-ABInbev-black%20(2).svg" },
-  { name: "LG", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ae_LG-svg.svg" },
-  { name: "Magnum", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/69b420a71cf1be9ebe0e43c4_magnum-logo-white.svg" },
-  { name: "P&G", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ac_p%26g-black.svg" },
-  { name: "Fujitsu", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6be_fujitsu.svg" },
-  { name: "Henkel", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ad_henkel-svg.svg" },
-  { name: "3M", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e709_3m-logo.svg" },
-  { name: "Grohe", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6af_grohe-svg.svg" },
-  { name: "BNP Paribas", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e150_Logo-BNPParibasFortis-black.svg" },
-  { name: "Nike", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e14e_Logo-Nike-black.svg" },
-  { name: "Microsoft", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e66f_microsoft.svg" },
+  { name: "Danone", src: `${BUCKET}/Danone-1.png` },
+  { name: "Goldberg", src: `${BUCKET}/Goldberg.png` },
+  { name: "Heineken", src: `${BUCKET}/Heineken.png` },
+  { name: "Life", src: `${BUCKET}/Life.png` },
+  { name: "MTN", src: `${BUCKET}/MTN.png` },
+  { name: "NHS", src: `${BUCKET}/NHS.png` },
+  { name: "Polo", src: `${BUCKET}/Polo.png` },
+  { name: "Samsung", src: `${BUCKET}/Samsung.png` },
+  { name: "Star", src: `${BUCKET}/Star.png` },
+  { name: "Tiger Beer", src: `${BUCKET}/Tiger%20beer.png` },
+  { name: "Zagg", src: `${BUCKET}/zagg.png` },
+  { name: "Terraform", src: `${BUCKET}/Terraform%20restaurant%20and%20bar.png` },
 ];
 
 const row2Logos = [
-  { name: "Essity", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e66c_Essity.svg" },
-  { name: "PepsiCo", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ff_pepsico_logo.webp" },
-  { name: "HSBC", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e5e1_HDBC.svg" },
-  { name: "Beiersdorf", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ab_beiersdorf.svg" },
-  { name: "Chanel", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e5d6_Channel.svg" },
-  { name: "Nestle", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6c1_nestle-black.svg" },
-  { name: "IKEA", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6c0_ikea-black.svg" },
-  { name: "Jaguar", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6a3_Jaguar%20logo.png" },
-  { name: "Nike", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e14e_Logo-Nike-black.svg" },
-  { name: "AB InBev", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e152_610953326e72a0e7f2f4abe9_Logo-ABInbev-black%20(2).svg" },
-  { name: "LG", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e6ae_LG-svg.svg" },
-  { name: "Microsoft", src: "https://cdn.prod.website-files.com/68779f680660261925b3e0fd/68779f680660261925b3e66f_microsoft.svg" },
+  { name: "Samsung", src: `${BUCKET}/Samsung.png` },
+  { name: "NHS", src: `${BUCKET}/NHS.png` },
+  { name: "Tiger Beer", src: `${BUCKET}/Tiger%20beer.png` },
+  { name: "Danone", src: `${BUCKET}/Danone-1.png` },
+  { name: "Star", src: `${BUCKET}/Star.png` },
+  { name: "Heineken", src: `${BUCKET}/Heineken.png` },
+  { name: "Zagg", src: `${BUCKET}/zagg.png` },
+  { name: "MTN", src: `${BUCKET}/MTN.png` },
+  { name: "Goldberg", src: `${BUCKET}/Goldberg.png` },
+  { name: "Polo", src: `${BUCKET}/Polo.png` },
+  { name: "Life", src: `${BUCKET}/Life.png` },
+  { name: "Terraform", src: `${BUCKET}/Terraform%20restaurant%20and%20bar.png` },
 ];
 
 /**
@@ -63,11 +64,14 @@ export default function LogoMarquee() {
             style={{
               x: row1X,
               opacity: 0.4,
-              justifyContent: "space-around",
+              justifyContent: "space-between",
               alignItems: "center",
               width: "180vw",
               display: "flex",
               marginLeft: "-25%",
+              gap: "40px",
+              paddingLeft: "40px",
+              paddingRight: "40px",
             }}
           >
             {row1Logos.map((logo, i) => (
@@ -77,7 +81,7 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px", marginLeft: "20px", marginRight: "20px" }}
+                style={{ objectFit: "contain", width: "120px", height: "60px", flexShrink: 0 }}
               />
             ))}
           </motion.div>
@@ -91,10 +95,13 @@ export default function LogoMarquee() {
             style={{
               x: row2X,
               opacity: 0.4,
-              justifyContent: "space-around",
+              justifyContent: "space-between",
               alignItems: "center",
               width: "180vw",
               display: "flex",
+              gap: "40px",
+              paddingLeft: "40px",
+              paddingRight: "40px",
             }}
           >
             {row2Logos.map((logo, i) => (
@@ -104,7 +111,7 @@ export default function LogoMarquee() {
                 src={logo.src}
                 alt={logo.name}
                 loading="lazy"
-                style={{ filter: "invert()", objectFit: "contain", maxWidth: "100px", height: "60px", maxHeight: "30px", marginLeft: "20px", marginRight: "20px" }}
+                style={{ objectFit: "contain", width: "120px", height: "60px", flexShrink: 0 }}
               />
             ))}
           </motion.div>
